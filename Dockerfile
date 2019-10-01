@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-golang:latest-build AS build
+FROM balenalib/raspberrypi3-golang:latest-build AS build
 
 WORKDIR /go/src/github.com/balena-io-projects/app
 
@@ -6,7 +6,7 @@ COPY /app ./
 
 RUN go build
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch
+FROM balenalib/raspberrypi3-debian:stretch
 
 COPY --from=build /go/src/github.com/balena-io-projects/app/ .
 
